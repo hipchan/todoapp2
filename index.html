@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+  <div id="main">
+      <h1>ToDo List</h1>
+      <input type="text" id="inputE1">
+      <button id="btn" onclick="addItem()">Add</button>
+      <ul id="List"></ul>
+    
+  </div>
+
+  <script>
+    let inputE1 = document.getElementById('inputE1')
+    let List = document.getElementById('list')
+
+     function addItem() {
+      let inputText = inputE1.value;
+      
+      if (inputText != "") {
+        let li = document.createElement('li')
+        let span = document.createElement('span')
+        span.textContent = inputText
+        li.appendChild(span)
+      //li.textcontent = inputText
+
+      let btnDelete = document.createElement('buton')
+      btnDelete.textContent = "Delete"
+      btnDelete.addEventListener('click', deleteItem, false)
+      li.appendChild(btnDelete)
+      li.addEventListener('click', completeTask, false)
+      list.appendChild(li)
+      inputE1.value = ""
+        
+        }
+    
+     }
+
+     function DeleteItem(e) {
+      let item = e.target.parentNode;
+      item.remove()
+     }
+
+     function completeTask(e) {
+       let item = e.target.firstchild
+       let btn = e.target.lastchild
+       item.classList.toggle('complete')
+
+       console.log(item.classList)
+     }
+
+  </script>
+</body>
+</html>
